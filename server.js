@@ -15,22 +15,13 @@ app.use(express.urlencoded({extended:true}));
 app.use(cors());
 const authenticateJWT = (req,res,next)=>{
     const {authorization} = req.headers;
-    jwt.verify(token,process.env.SECRET,(err,user)=>{
-        if(err) return res.status("403").json({"message":"Auth Token Expired"});
-        next();
+    jwt.verify(authorization,process.env.SECRET,(err,user)=>{
+        if(err) return res.status(403).json({"message":"Auth Token Expired"});
+        next(); 
     })
 }
 
 const PORT = 4500;
-
-
-app.post('/user/generate',async(req,res)=>{
-    const {password}=req.body;
-    console.log("Hit    ",password)
-    const hashedPassword = await bcrypt.hash(password,12);
-    console.log(hashedPassword)
-    res.status(200).json({hashedPassword});
-})
 
 app.post("/user/login",async (req,res)=>{
     const {username,password}=req.body;
