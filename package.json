@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "node server.js",
-    "build": "npm install",
-    "run": "node server.js",
+      "run": "node server.js",
     "dev": "nodemon server.js"
   },
   "author": "Prakhar",

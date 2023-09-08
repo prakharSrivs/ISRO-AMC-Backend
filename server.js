@@ -9,7 +9,6 @@ const cors = require("cors");
 const app = express();
 
 const User = [{username:"user1",hashedPassword:"$2b$12$Nduf7vgc3VfNSCyEiPvFJ.BocE9QU3u9KYMGrn6cKMTlOSfegtCBO"}]
-//userNrsc@2023isro
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
