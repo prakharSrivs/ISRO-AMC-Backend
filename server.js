@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
 const authenticateJWT = (req,res,next)=>{
-    const {authorization} = req.headers;
+    const {Authorization: token} = req.headers;
     jwt.verify(token,process.env.SECRET,(err,user)=>{
         if(err) return res.status("403").json({"message":"Auth Token Expired"});
         next();
